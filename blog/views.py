@@ -13,9 +13,6 @@ from django.urls import reverse_lazy
 ########## POSTS/DRAFT FORM VIEW ##########
 
 
-class AboutView(TemplateView):
-    template_name = "blog/about.html"
-
 class PostListView(ListView):
     model = Post
 
