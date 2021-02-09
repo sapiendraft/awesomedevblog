@@ -2,15 +2,7 @@
 {% block content %}
 
     <h1 class="posttitle loader">{{post.title}}</h1>
-    
-    {% if post.publushed_date %}
-        <div class="postdate date">
-            {{post.published_date}}
-        </div>
-    {% else %}
-        <a class="btn btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-    {% endif %}
-
+    {{post.published_date}}
     <p class="postcontent">{{post.text|safe|linebreaks}}</p>
 
     {% if user.is_authenticated %}
@@ -22,29 +14,4 @@
             <span class="fa fa-trash"></span>
         </a>
     {% endif %}
-
-    <hr />
-    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-
-    <div class="container">
-        {% for comment in post.comments.all %}
-            <br />
-            {% if user.is_authenticated or comment.approved_comment %}
-                {{comment.created_date}}
-                {% if not comment.approved_comment %}
-                    <a class="btn btn-primary" href="{% url 'comment_remove' pk=comment.pk %}">
-                        <span class="fa fa-trash"></span>
-                    </a>
-                    <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}" aria-label="Ok">
-                        <span class="fa fa-check-circle" aria-hidden="true"></span>
-                    </a>
-                {% endif %}
-
-                <p>{{comment.text|safe|linebreaks}}</p>
-                <p>By {{comment.author}}</p>
-            {% endif %}
-            {% empty %}
-                <p>No comments yet</p>
-        {% endfor %}
-    </div>
 {% endblock %}
