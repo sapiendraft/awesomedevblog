@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{% static '/css/master.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}"/>
+    <script src="https://kit.fontawesome.com/fa461b985e.js" crossorigin="anonymous"></script>
 </head>
-    <body class="test">
-        <nav class="navbar navbar-dark mynav" style="background-color: #2f4c58;" role="navigation" id="navbar">
+    <body>
+        <nav class="navbar navbar-dark mynav" style="background-color: #03111c;" role="navigation" id="navbar">
             <div class="container">
                 <a class="navbar-brand mynav" href="{% url 'home' %}">BLOG BRAND</a>
-                <a class="nav-item navbutton" href="{% url 'about' %}" role="button">About</a>
-                <a class="nav-item navbutton" href="{% url 'post_list' %}">Blog</a>
+                <a class="nav-item nav-link navbutton" href="{% url 'about' %}" role="button">Sobre & Contato</a>
+                <a class="nav-item nav-link navbutton" href="{% url 'post_list' %}">Blog</a>
 
                 <div class="navbar align-items-center ml-auto">
                     {% if user.is_authenticated %}
@@ -24,22 +25,17 @@
                     <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                     <a class="nav-item">Welcome: {{user.username}}</a>
                     {% else %}
-                    <a class="nav-item nav-link" href="https://github.com/sapiendraft">Github</a>
-                    <a class="nav-item nav-link" href="https://www.linkedin.com/in/raphael-santos-barbosa-59364916a/">LinkedIn</a>
+                    <a class="nav-item nav-link navbutton" href="https://github.com/sapiendraft">
+                        <span class="fab fa-github" aria-hidden="true"></span> GitHub</a>
+                    <a class="nav-item nav-link navbutton" href="https://www.linkedin.com/in/raphael-santos-barbosa-59364916a/">
+                        <span class="fab fa-linkedin" aria-hidden="true"></span> LinkedIn</a>
                     {% endif %}
                 </div>
             </div>
         </nav>
-
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="blog_posts">
-                        {% block content %}
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
+        <div class="blog_posts">
+            {% block content %}
+            {% endblock %}
         </div>
     </body>
 </html>

@@ -1,0 +1,24 @@
+p{
+    color: #03111c;
+}
+
+.navbutton{
+    color: white;
+}
+
+.navbutton:hover{
+    color: #4d8a47;
+}
+
+.navbar-brand{
+    margin-right: 2em;
+}
+
+.link-emb{
+    color: #03111c;
+    font-weight: bold;
+}
+
+.link-emb:hover{
+    color: #4d8a47;
+}
