@@ -8,7 +8,16 @@
                 <br>
                 <h1 class="posttitle loader fade">{{post.title}}</h1>
                 <hr class="my-4">
-                {{post.published_date}}
+                
+                {% if post.published_date %}
+                    <div class="date postdate">
+                        {{ post.published_date }}
+                    </div>
+
+                {% else %}
+                    <a class="btn btn-outline-dark" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                {% endif %}
+
                 <p class="postcontent">{{post.text|safe|linebreaks}}</p>
 
                 {% if user.is_authenticated %}
